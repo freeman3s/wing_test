@@ -1,0 +1,17 @@
+services:
+    application.admin.item:
+        class: Application\ItemBundle\Admin\ItemAdmin
+        arguments:
+            - ''
+            - Application\ItemBundle\Entity\Item
+            - SonataAdminBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Wing, label: Items }
+    application.admin.category:
+        class: Application\ItemBundle\Admin\CategoryAdmin
+        arguments:
+                    - ''
+                    - Application\ItemBundle\Entity\Category
+                    - SonataAdminBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Wing, label: Categories }

@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+{% block title %}Items{% endblock%}
+{% block body %}
+    <div class="col-sm-12 text-left">
+        <div class="content">
+            <h2>Items are included in {{ category.name }}</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td><a href="{{ path('item', {'id':item.id}) }}">{{ item.name }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

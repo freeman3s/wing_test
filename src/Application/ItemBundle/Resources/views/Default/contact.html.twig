@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+{% block title %}Contact{% endblock%}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/contact.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="col-sm-12 text-left">
+        <div class="content">
+            <header class="text-center">
+                <h1>Want to contact us?</h1>
+            </header>
+            {% for flashMessage in app.session.flashbag.get('contact-notice') %}
+                <div class="contact-notice">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            <div>
+                {{ form_start(form, { 'action': path('contact'), 'method': 'POST', 'attr': {'class': 'contact'} }) }}
+                {{ form_errors(form) }}
+
+                {{ form_row(form.name) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.subject) }}
+                {{ form_row(form.body) }}
+
+                {{ form_rest(form) }}
+
+                <input type="submit" value="Submit" />
+            </div>
+        </div>
+    </div>
+{% endblock %}

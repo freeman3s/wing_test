@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <div class="col-sm-8 text-left">
+        <div class="content">
+            <h2>Items</h2>
+           <p>Total items count: {{ pagination.getTotalItemCount }} </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in pagination %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td><a href="{{ path('item', {'id':item.id}) }}">{{ item.name }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block sidebar %}
+    <div class="col-sm-4 sidenav">
+        <h2>Categories</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td><a href="{{ path('category', {'id':category.id}) }}">{{ category.name }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

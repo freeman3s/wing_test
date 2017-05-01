@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+{% block title %}Item Page{% endblock%}
+{% block body %}
+    <div class="col-sm-12 text-left">
+        <div class="content">
+            <h2>Item Page</h2>
+            <p>Item ID is <b>{{ item.id }}</b></p>
+            <p>Item Name is <b>{{ item.name }}</b></p>
+        </div>
+    </div>
+{% endblock %}
